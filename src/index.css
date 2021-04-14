@@ -1,0 +1,59 @@
+body {
+  margin: 0;
+  font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+    'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #202442;
+  color: white;
+}
+
+.landing-title {
+  font-family: 'Montserrat', 'Source Sans Pro', sans-serif;
+}
+
+.landing-desc {
+  color: #c2c2c2;
+  margin-bottom: 4rem;
+}
+
+.nav-tabs .nav-link {
+  border: 0px;
+}
+
+.nav-tabs {
+  border-bottom: 0px !important;
+  margin-bottom: 30px;
+  font-size: 1.5rem;
+}
+
+.nav-link {
+  padding: 0.5rem;
+  margin: 0 0.5rem;
+  padding-bottom: 0.25rem !important;
+  color: #5cc28c !important;
+}
+
+.nav-link:hover,
+.nav-link:active,
+.nav-link:focus,
+.nav-link:visited {
+  border-color: transparent !important;
+}
+
+.nav-link.active {
+  border-color: transparent !important;
+  background-color: transparent !important;
+  color: #f65164 !important;
+  border-bottom: 4px solid #f65164 !important;
+}
+
+.card {
+  border: 0px solid transparent;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
