@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import { Row, Col, Tabs, Tab } from 'react-bootstrap'
+import { Row, Col, Button } from 'react-bootstrap'
 import Track from './Track'
 
 const Tracks = ({ tracks }) => {
@@ -13,15 +13,19 @@ const Tracks = ({ tracks }) => {
   })
 }
 
-const ListTracks = ({ token }) => {
-  const [shortTracks, setShortTracks] = useState([])
-  const [mediumTracks, setMediumTracks] = useState([])
-  const [longTracks, setLongTracks] = useState([])
+const ListTracks = ({ timeRange, limit, token }) => {
+  const [tracks, setTracks] = useState([])
+  const [type] = useState('tracks')
+  const [offset, setOffset] = useState(0)
+
+  const loadMore = async () => {
+    setOffset(offset + limit)
+  }
 
   useEffect(() => {
-    const getTop = async (type, timeRange, limit) => {
+    const getTopTracks = async () => {
       let resp = await axios.get(
-        `https://api.spotify.com/v1/me/top/${type}?time_range=${timeRange}&limit=${limit}&offset=0`,
+        `https://api.spotify.com/v1/me/top/${type}?time_range=${timeRange}&limit=${limit}&offset=${offset}`,
         {
           headers: {
             Authorization: 'Bearer ' + token,
@@ -31,38 +35,24 @@ const ListTracks = ({ token }) => {
       return resp
     }
 
-    getTop('tracks', 'short_term', 8).then((resp) =>
-      setShortTracks(resp.data.items)
-    )
-    getTop('tracks', 'medium_term', 8).then((resp) =>
-      setMediumTracks(resp.data.items)
-    )
-    getTop('tracks', 'long_term', 8).then((resp) =>
-      setLongTracks(resp.data.items)
-    )
-  }, [token])
+    if (limit + offset !== tracks.length) {
+      getTopTracks().then((resp) => {
+        let tempTracks = tracks
+        tempTracks = tempTracks.concat(resp.data.items)
+        setTracks(tempTracks)
+      })
+    }
+  }, [token, limit, timeRange, type, offset, tracks])
 
   return (
-    <div>
-      <br />
-      <Tabs defaultActiveKey='short' id='uncontrolled-tab-example'>
-        <Tab eventKey='short' title='Last 4 Weeks'>
-          <Row>
-            <Tracks tracks={shortTracks} />
-          </Row>
-        </Tab>
-        <Tab eventKey='medium' title='Last 6 Months'>
-          <Row>
-            <Tracks tracks={mediumTracks} />
-          </Row>
-        </Tab>
-        <Tab eventKey='long' title='All-time'>
-          <Row>
-            <Tracks tracks={longTracks} />
-          </Row>
-        </Tab>
-      </Tabs>
-    </div>
+    <Row>
+      <Tracks tracks={tracks} />
+      <Col style={{ textAlign: 'center' }}>
+        <Button onClick={loadMore}>Load more</Button>
+        <br />
+        <br />
+      </Col>
+    </Row>
   )
 }
 

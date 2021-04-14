@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import ListTracks from './ListTracks'
+import ListTimeRange from './ListTimeRange'
 import { Container, Button, Row, Col } from 'react-bootstrap'
 import Cookies from 'js-cookie'
 import axios from 'axios'
@@ -50,7 +50,7 @@ const Home = ({ token }) => {
           </div>
         </Col>
       </Row>
-      <ListTracks token={token} />
+      <ListTimeRange token={token} />
     </Container>
   )
 }

@@ -10,7 +10,8 @@ This app is using React and Spotify API.
 
 - [x] Login and logout
 - [x] Show favourite songs
-- [ ] Infinite scroll / Load more
+- [x] Infinite scroll / Load more
+- [ ] Demo mode
 
 ## Installation
 
