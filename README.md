@@ -1,5 +1,7 @@
 # SpotifyTop
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/f3282601-0086-4a36-a11c-0272b9bfacd9/deploy-status)](https://app.netlify.com/sites/eloquent-bose-e1dcea/deploys)
+
 An app for showing your favourite songs on Spotify!
 
 This app is using React and Spotify API.
