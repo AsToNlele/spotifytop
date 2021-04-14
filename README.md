@@ -6,6 +6,8 @@ An app for showing your favourite songs on Spotify!
 
 This app is using React and Spotify API.
 
+[live link]: https://spotify.aston.sh
+
 ## Todo
 
 - [x] Login and logout
