@@ -6,7 +6,7 @@ An app for showing your favourite songs on Spotify!
 
 This app is using React and Spotify API.
 
-[live link]: https://spotify.aston.sh
+[live link]: (https://spotify.aston.sh)
 
 ## Todo
 
@@ -18,7 +18,7 @@ This app is using React and Spotify API.
 ## Installation
 
 1. Run `npm install` to install all packages
-2. Set Environment variable `REACT_APP_CLIENT_ID = ''` in `.env.development.local` or your deployment service
+2. Set Environment variable `REACT_APP_CLIENT_ID` in `.env.development.local` or your deployment service
 3. Run `npm start` to start the app
 
 ## Building
